@@ -1,0 +1,89 @@
+{%extends './base.html' %}
+{%load static%}
+{% block body_block %}
+
+<section>
+
+<style>
+.background {
+  background-image: url('/static/images/form.jpg');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+ 
+}
+
+
+
+.btn {
+  all: revert;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #BEB4A5;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 2.5em 4.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+
+}
+.btn:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.first {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.first:hover {
+  box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+
+
+</style>
+
+  <div class="jumbotron jumbotron-fluid background" >
+    <div class="container"> 
+    
+    <center style="margin-top:2%;"> 
+      <a class="btn first text-center" href="{% url 'addDataInForm' %}" aria-disabled="true">Formular ausfüllen</a>
+    
+      {%if data_save == True %}
+              <div class="container" id="successDiv">
+                
+                <div class="alert-box">
+                  <div class="alert alert-success">
+                    <div class="alert-icon text-center">
+                      <i class="fa fa-check-square-o  fa-3x" aria-hidden="true"></i>
+                    </div>
+                    <div class="alert-message text-center">
+                      <strong>Nachricht!</strong> Ihre Daten wurden erfolgreich übermittelt. 
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <script>removeDiv()</script>
+      {%endif%}
+    </center>  
+  </div> 
+</section>
+
+{%endblock%}

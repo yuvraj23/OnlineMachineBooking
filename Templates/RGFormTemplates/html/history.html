@@ -1,0 +1,17 @@
+{%extends './base.html' %} {%load static%} {% block body_block %} <section>
+  <div class="jumbotron jumbotron-fluid jumbotron bg-dark text-white">
+    <div class="container">
+      {% if messages %}
+      {% for message in messages%}
+      <p {% if message.tag %} class="alert alert-{{message.tags}} mb-5" {%endif%} role="alert">{{message}} </p>
+      {%endfor%}
+      {%endif%}
+
+      {% for i in history %}
+            {{i.User}}
+            <br>
+        {% endfor %}
+    
+    </div>
+  </div>
+</section> {%endblock%}

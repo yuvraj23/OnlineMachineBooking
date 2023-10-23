@@ -1,0 +1,53 @@
+{%extends './base.html' %} {%load static%} {% block body_block %} <section>
+  <div class="jumbotron jumbotron-fluid jumbotron bg-dark text-white">
+    <div class="container">
+       <script>
+              changeLabelName()
+      </script>
+      {% if messages %}
+      {% for message in messages%}
+      <p {% if message.tag %} class="alert alert-{{message.tags}} mb-5" {%endif%} role="alert">{{message}} </p>
+      {%endfor%}
+      {%endif%}
+      <form action="" method="post" novalidates novalidate>
+        {% csrf_token %}
+          {% for fm in form %}
+            <div class="form-group">
+               {{fm.label_tag}}
+                {{fm}}
+                <small class="text-warning">
+                 {% if fm.errors %}
+                    <div class="alert alert-danger">
+                       {{ fm.errors|striptags }}
+                   </div>
+                {% endif %}
+                </small>
+              </div>
+
+            {%if valid == False %}
+                <div class="alert alert-danger alertDiv" role="alert" id="alertDiv"  style="margin-top:1%;overflow: auto;">
+                  <p> <i class="fa fa-warning fa_custom" style="color:red;"></i> Login-Daten ungültig! Bitte erneut versuchen.  </p>
+                </div>
+                <script>removeError()</script>
+              {%else%}
+                    <script>removeError()</script>
+              {%endif%}
+
+          {% endfor %}
+
+
+                <div>
+                  <br>
+
+                    <input type="submit" values="Submit" class="btn btn-primary" id="login">
+                </div>
+
+
+              {%if form.non_field_errors%}
+              {%for error in form.non_field_errors%}
+                <p class="alert alert-danger my-3">{{error}}</p>
+          {%endfor%} {%endif%}
+     </form>
+    </div>
+  </div>
+</section> {%endblock%}

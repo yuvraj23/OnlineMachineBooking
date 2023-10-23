@@ -1,0 +1,31 @@
+{%extends './base.html' %}
+{%load static%}
+{% block body_block %}
+
+<section>
+
+<style>
+.background {
+ 
+  background-image: url('/static/images/thankyou.jpg');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+ 
+}
+</style>
+
+  <div class="jumbotron jumbotron-fluid background" >
+    <div class="container "> 
+    <center>
+      <div class="alert alert-success " role="alert" style="width:fit-content;height:fit-content;text-align: center;">
+        Einen schönen Tag noch
+      </div>
+    </center>  
+    </div>
+  </div> 
+</section>
+
+{%endblock%}

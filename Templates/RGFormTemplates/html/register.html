@@ -1,0 +1,39 @@
+{%extends './base.html' %} {%load static%} {% block body_block %} <section>
+  <div class="jumbotron jumbotron-fluid jumbotron bg-dark text-white">
+    <div class="container">
+      {% if messages %}
+      {% for message in messages%}
+      <p {% if message.tag %} class="alert alert-{{message.tags}} mb-5" {%endif%} role="alert">{{message}} </p>
+      {%endfor%}
+      {%endif%}
+      <form action="" method="post" novalidates> 
+        {% csrf_token %} 
+          {% for fm in form %} 
+            <div class="form-group">
+               {{fm.label_tag}} 
+                {{fm}} 
+                <small class="text-warning">
+                 {% if fm.errors %}
+                    <div class="alert alert-danger">
+                       {{ fm.errors|striptags }}
+                   </div>
+                {% endif %}
+                </small>
+              </div>
+
+          {% endfor %}
+
+
+                <div>
+                  <br>
+                    <input type="submit" values="Submit" class="btn btn-primary">
+                </div>
+                
+              {%if form.non_field_errors%} 
+              {%for error in form.non_field_errors%} 
+                <p class="alert alert-danger my-3">{{error}}</p> 
+          {%endfor%} {%endif%}
+     </form>
+    </div>
+  </div>
+</section> {%endblock%}
